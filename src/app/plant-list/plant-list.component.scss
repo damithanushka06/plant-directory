@@ -27,7 +27,7 @@ $color-text: #929395;
 .plant-list-container {
   max-width: 1400px;
   padding: 0 1rem 1rem;
-  margin: calc(1rem - 77px) auto 2rem;
+  margin: calc(1rem - 90px) auto 2rem;
 }
 
 .plant-list-header {
@@ -37,7 +37,9 @@ $color-text: #929395;
   color:$color-card-bg;
   background-color: $color-header-bg;
   margin: 0 auto;
+  height: 50px;
   padding: 12px;
+
 }
 
 .plant-card {
