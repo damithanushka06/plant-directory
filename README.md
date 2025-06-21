@@ -1,47 +1,59 @@
-# Plant Directory
+# PlantDirectory
 
-An Angular application that displays a list of plants retrieved from a REST API with full detail views, responsive layout, and pagination. Built for desktop, tablet, and mobile breakpoints with a clean SCSS-based design.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
 
----
+## Development server
 
-## Live Features
+To start a local development server, run:
 
-- Paginated plant listing (10 per page)
-- "More Results" button to fetch more data from API
-- Clickable cards open plant detail pages
-- Responsive layout:
-  - **Desktop (≥1025px):** 5 cards per row
-  - **Tablet (768px - 1024px):** 2 cards per row
-  - **Mobile (320px - 767px):** 1 card per row
-- Details layout: 2 columns (tablet/desktop), 1 column (mobile)
-- Reusable SCSS with color variables
-- Angular routing enabled
+```bash
+ng serve
+```
 
----
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Tech Stack
+## Code scaffolding
 
-- Angular 19
-- TypeScript
-- SCSS (with variables)
-- RxJS (for API handling)
-- Angular CLI
-- Responsive CSS (Flex/Grid)
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
----
+```bash
+ng generate component component-name
+```
 
-## API Reference
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-- **List endpoint:**  
-  `https://sg666zbdmf.execute-api.us-east-1.amazonaws.com/dev`  
-  Returns 10 plants and a `next` token.
+```bash
+ng generate --help
+```
 
-- **Paginated results:**  
-  Use the `next` token returned in the previous call:  
-  `https://sg666zbdmf.execute-api.us-east-1.amazonaws.com/dev/<next-token>`
+## Building
 
-- **Details endpoint:**  
-  `https://sg666zbdmf.execute-api.us-east-1.amazonaws.com/dev/{plantId}/`
+To build the project run:
 
----
+```bash
+ng build
+```
 
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
