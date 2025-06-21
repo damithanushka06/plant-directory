@@ -1,23 +1,26 @@
-<div class="plant-list">
-  <div
-    class="plant-card"
-    *ngFor="let plant of plants"
-    [routerLink]="['/plant', plant.id]">
-    <h3 class="plant-link">{{ plant.name }}</h3>
-    <div class="plant-info">
-      <p>{{ plant.division }}</p>
-      <p>{{ plant.address }}</p>
-      <p>{{ plant.country }}</p>
+<div class="plant-list-container">
+  <h2 class="plant-list-header">Plants</h2>
+
+  <div class="plant-list">
+    <div
+      class="plant-card"
+      *ngFor="let plant of plants"
+      [routerLink]="['/plant', plant.id]">
+      <h3 class="plant-link">{{ plant.name }}</h3>
+      <div class="plant-info">
+        <p>{{ plant.division }}</p>
+        <p>{{ plant.address }}</p>
+        <p>{{ plant.country }}</p>
+      </div>
     </div>
   </div>
+
+  <button
+    *ngIf="next"
+    (click)="loadPlants()"
+    [disabled]="loading"
+    class="load-more-btn"
+  >
+    {{ loading ? 'Loading...' : 'More Results' }}
+  </button>
 </div>
-
-
-<button
-  *ngIf="next"
-  (click)="loadPlants()"
-  [disabled]="loading"
-  class="load-more-btn"
->
-  {{ loading ? 'Loading...' : 'More Results' }}
-</button>
