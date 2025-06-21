@@ -6,7 +6,9 @@
   background-color: $color-bg;
   max-width: 1200px;
   margin: 0 auto 2rem;
-  padding: 11px 1rem;
+  padding: 11px 0.2rem;
+  max-height: 433px;
+  overflow-y: auto;
 
   grid-template-columns: repeat(1, 1fr);
 
