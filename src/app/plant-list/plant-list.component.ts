@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Plant} from '../dtos/plant';
 
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {PlantService} from '../service/plant.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-plant-list',
@@ -17,10 +18,11 @@ import {PlantService} from '../service/plant.service';
   templateUrl: './plant-list.component.html',
   styleUrls: ['./plant-list.component.scss']
 })
-export class PlantListComponent implements OnInit{
+export class PlantListComponent implements OnInit, OnDestroy{
   plants: Plant[] = [];
   next: string | null = null;
   loading = false;
+  private plantsSub?: Subscription;
 
   constructor(private plantService: PlantService) {}
 
@@ -34,7 +36,7 @@ export class PlantListComponent implements OnInit{
   loadPlants(): void {
     if (this.loading) return;
     this.loading = true;
-    this.plantService.getPlants(this.next ?? '').subscribe({
+    this.plantsSub = this.plantService.getPlants(this.next ?? '').subscribe({
       next: ({ plants, next }) => {
         this.plants = [...this.plants, ...plants];
         this.next = next;
@@ -44,7 +46,12 @@ export class PlantListComponent implements OnInit{
     });
   }
 
-  goToDetail(id: number) {
-    this.router.navigate(['/plant', id]);
+  trackByPlantId(index: number, plant: Plant): number {
+    return plant.id ?? index;
   }
+
+  ngOnDestroy(): void {
+    this.plantsSub?.unsubscribe();
+  }
+
 }

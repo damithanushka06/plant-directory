@@ -1,10 +1,10 @@
-<div class="plant-list-container" *ngIf="plants.length > 0">
+<div class="plant-list-container" *ngIf="plants.length > 0; else loadingTpl">
   <h2 class="plant-list-header">Plants</h2>
 
   <div class="plant-list">
     <div
       class="plant-card"
-      *ngFor="let plant of plants"
+      *ngFor="let plant of plants; trackBy: trackByPlantId"
       [routerLink]="['/plant', plant.id]">
       <h3 class="plant-name">{{ plant.name }}</h3>
       <div class="plant-info">
@@ -24,3 +24,9 @@
     {{ loading ? 'Loading...' : 'Load More Results' }}
   </button>
 </div>
+
+<ng-template #loadingTpl>
+  <div class="loading-container">
+    <p>Loading plants...</p>
+  </div>
+</ng-template>

@@ -1,0 +1,14 @@
+@use '../styles/variables' as *;
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* or desired height */
+  font-size: 1.2rem;
+  color: $color-address-title;
+  font-weight: 600;
+  background-color: $color-card-bg;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
