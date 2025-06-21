@@ -32,7 +32,7 @@ export class PlantListComponent implements OnInit{
    * Loads the next set of plants from the API and appends them to the existing list.
    */
   loadPlants(): void {
-    if (this.loading) return; // prevent concurrent loads
+    if (this.loading) return;
     this.loading = true;
     this.plantService.getPlants(this.next ?? '').subscribe({
       next: ({ plants, next }) => {
@@ -44,4 +44,7 @@ export class PlantListComponent implements OnInit{
     });
   }
 
+  goToDetail(id: number) {
+    this.router.navigate(['/plant', id]);
+  }
 }
