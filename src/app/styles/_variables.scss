@@ -1,4 +1,4 @@
-// _variables.scss
+@use 'sass:color';
 
 // Colors
 $color-primary: #2c3e50;
@@ -13,8 +13,10 @@ $color-address-title: #555;
 $color-address-text: #777;
 $color-description-text: #333;
 $color-btn-text: #ffffff;
-$color-btn-hover-bg: darken($color-secondary, 10%);
-$color-btn-disabled-bg: lighten($color-secondary, 30%);
+
+// Replace darken/lighten with color.adjust
+$color-btn-hover-bg: color.adjust($color-secondary, $lightness: -10%);
+$color-btn-disabled-bg: color.adjust($color-secondary, $lightness: 30%);
 
 // Font Sizes
 $font-size-back-btn: 0.9rem;
