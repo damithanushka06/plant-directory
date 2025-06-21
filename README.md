@@ -209,7 +209,20 @@ this.plantsSub?.unsubscribe();
 7. Safe Observable Cleanup in PlantDetailComponent:
    Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
 
-8. 
+8. SCSS Architecture Enhancement
+   Added a centralized SCSS variables file (_variables.scss) to manage design tokens such as colors, border-radius, and spacing consistently across the project.
+
+   Introduced a common global stylesheet to maintain shared styles and reduce duplication across components.
+
+   Benefits:
+
+   Improves maintainability and consistency in UI styling.
+
+   Makes it easier to update themes or branding in one place.
+
+9. Added animation to .loading-container using fadeInScale to enhance user interaction and improve visual feedback during loading states.
+
+10. 
 
 
 
