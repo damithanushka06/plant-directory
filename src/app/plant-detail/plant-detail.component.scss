@@ -3,18 +3,18 @@
 
 .plant-detail-container {
   max-width: $max-width;
-  margin: $margin-vertical auto;
   padding: 0 $padding-horizontal;
+  margin: calc(1rem - 105px) auto 2rem;
 }
 
 .back-btn {
   background: none;
   border: none;
-  color: $color-accent;
+  color: $color-header-text;
   cursor: pointer;
   font-size: $font-size-back-btn;
   margin-bottom: 1rem;
-  font-weight: $font-weight-back-btn;
+  font-weight: bold;
 }
 
 .header {
