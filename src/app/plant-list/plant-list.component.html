@@ -1,6 +1,6 @@
 <div class="plant-list">
   <div class="plant-card" *ngFor="let plant of plants">
-    <h3 class="plant-name">{{ plant.name }}</h3>
+    <h3  [routerLink]="['/plant', plant.id]" class="plant-link" >{{ plant.name }}</h3>
     <div class="plant-info">
       <p><strong>Division:</strong> {{ plant.division }}</p>
       <p><strong>Address:</strong> {{ plant.address }}</p>

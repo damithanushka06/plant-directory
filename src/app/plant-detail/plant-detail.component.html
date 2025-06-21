@@ -1,1 +1,27 @@
-<p>plant-detail works!</p>
+<div class="plant-detail-container" *ngIf="plant && !loading; else loadingTpl">
+  <button class="back-btn" (click)="goBack()">&lt; Back to all plants</button>
+
+  <header class="header">
+    <h1 class="name">{{ plant.name }}</h1>
+    <span class="division">{{ plant.division }}</span>
+  </header>
+
+  <div class="content">
+    <section class="address-card">
+      <h3>Address</h3>
+      <p>{{ plant.address }}</p>
+
+      <h3>Manager</h3>
+      <p>{{ plant.name }}</p>
+    </section>
+
+    <section class="description-card">
+      <h3>Description</h3>
+      <p>{{ plant.description }}</p>
+    </section>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <p>Loading plant details...</p>
+</ng-template>

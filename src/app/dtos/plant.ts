@@ -4,6 +4,7 @@ export class Plant {
   address?: string;
   country?: string;
   division?: string;
+  description?: string;
 
   constructor() {
   }
