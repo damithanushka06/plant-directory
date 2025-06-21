@@ -28,7 +28,7 @@ export class PlantService {
     return this.http.get<ApiResponse>(url).pipe(
       map(response => ({
         plants: response.results ?? [],
-        next: response.next ?? ''
+        next: response.next ?? null
       }))
     );
   }

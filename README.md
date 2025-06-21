@@ -1,59 +1,201 @@
-# PlantDirectory
+# Plant Directory
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+This is a simple Angular application that fetches and displays a list of plants from a remote API. Users can view a summary of each plant on the main page and click on a plant tile to view detailed information. It showcases clean component design, responsive styling, and API integration.
 
-## Development server
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version **19.2.12**.
 
-To start a local development server, run:
+---
+
+## Project Setup
+
+Install dependencies using npm:
+
+```bash
+npm install
+```
+
+---
+
+## Development Server
+
+Start the local development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once running, open your browser and navigate to:
 
-## Code scaffolding
+```
+http://localhost:4200/
+```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The application will automatically reload when you modify source files.
+
+---
+
+## API Endpoints
+
+This project consumes data from a live backend service:
+
+- **Get Plant List**:  
+  `https://sg666zbdmf.execute-api.us-east-1.amazonaws.com/dev`
+
+- **Get Plant Details by ID**:  
+  `https://sg666zbdmf.execute-api.us-east-1.amazonaws.com/dev/{id}`  
+  (Example: `/dev/1` for Plant ID 1)
+
+---
+
+## Code Scaffolding
+
+Generate new Angular elements using Angular CLI:
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+For other schematics like directives or pipes:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+---
 
-To build the project run:
+## Building the Project
+
+To compile and build the production-ready application:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts will be stored in the `dist/` directory. The default build includes optimizations for production.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Running Unit Tests
+
+To execute unit tests using the [Karma](https://karma-runner.github.io) test runner:
 
 ```bash
 ng test
 ```
+Tested Modules
 
-## Running end-to-end tests
+PlantService (plant.service.spec.ts)
 
-For end-to-end (e2e) testing, run:
+ 1. Tests getPlants():
 
-```bash
-ng e2e
+ 2. Verifies API call and response transformation.
+
+ 3. Tests getPlantById(id):
+
+ 4. Fetches individual plant details by ID.
+
+Uses HttpClientTestingModule to mock HTTP requests.
+
+PlantDetailComponent (plant-detail.component.spec.ts)
+
+ 1. Calls loadPlant() on ngOnInit().
+
+ 2. Mocks route parameters using ActivatedRoute.
+
+Verifies:
+
+ 1. Successful API response.
+
+ 2. Error handling behavior.
+
+ 3. Edge case: Invalid id (no API call made).
+
+ 4. Tests goBack() navigation using mock Router.
+
+PlantListComponent (plant-list.component.spec.ts)
+
+ 1. Fetches plant list on component load.
+
+ 2. Tests pagination behavior with mocked API responses.
+
+ 3. Handles loading and error states.
+
+
+Testing Tools & Modules
+
+ 1. HttpClientTestingModule for HTTP request mocking.
+
+ 2. ActivatedRoute mock via convertToParamMap().
+
+ 3. Jasmine spies (jasmine.createSpyObj) for services and router.
+
+ 4. RxJS of() and throwError() for mocking asynchronous responses.
+
+---
+
+## Features
+
+- **Plant List View**: Displays a responsive grid of plant tiles showing name, division, country, and address.
+- **Details View**: Clicking on a plant navigates to a route that loads detailed data using the plant ID.
+- **Routing**: Client-side routing with dynamic paths powered by Angular Router.
+- **Responsive Layout**: Adapts layout based on device width using CSS Grid and media queries.
+- **Clean Component Styling**: SCSS modules used to encapsulate styles.
+- **Live API Integration**: Fetches data from a remote API using `HttpClient`.
+
+---
+
+## Enhancements & Improvements
+
+This project includes thoughtful enhancements beyond basic scaffolding:
+
+
+
+---
+
+## Future Enhancements
+
+If further developed, the following features could be added:
+
+- **Search & Filter**: Allow filtering of plants by name, country, or division.
+- **Test Coverage**: Add unit tests for services.
+- **Error States**: Display error messages on API failure or invalid routes.
+- **Accessibility (a11y)**: Improve keyboard support and add ARIA attributes.
+- **Lazy Loading & Virtual Scroll**: Optimize for performance with large datasets.
+- **Internationalization (i18n)**: Support multiple languages.
+
+---
+
+## 🔧 Angular & Tooling Versions
+
+Project dependencies include:
+
+```json
+{
+  "@angular/core": "^19.2.0",
+  "@angular/cli": "^19.2.12",
+  "rxjs": "~7.8.0",
+  "zone.js": "~0.15.0",
+  "typescript": "~5.7.2",
+  "karma": "~6.4.0",
+  "jasmine-core": "~5.6.0"
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Refer to `package.json` for the full list of dev and runtime dependencies.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📚 Additional Resources
+
+- [Angular CLI Documentation](https://angular.dev/tools/cli)
+- [Angular Official Docs](https://angular.dev/)
+- [RxJS Docs](https://rxjs.dev/guide/overview)
+- [Karma Testing Framework](https://karma-runner.github.io)
+
+---
+
+## 👤 Author
+
+**Damith Anushka**
+
+---
