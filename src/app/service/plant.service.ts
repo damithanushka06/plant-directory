@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs';
-import {Plant} from '../dto/Plant';
-import {ApiResponse} from '../dto/ApiResponse';
+import {Plant} from '../dtos/plant';
+import {ApiResponse} from '../dtos/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,8 @@ export class PlantService {
     const url = nextSuffix ? `${this.baseUrl}${nextSuffix}` : this.baseUrl;
     return this.http.get<ApiResponse>(url).pipe(
       map(response => ({
-        plants: response.results,
-        next: response.next
+        plants: response.results ?? [],
+        next: response.next ?? ''
       }))
     );
   }
