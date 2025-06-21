@@ -1,1 +1,19 @@
-<p>plant-list works!</p>
+<div class="plant-list">
+  <div class="plant-card" *ngFor="let plant of plants">
+    <h3 class="plant-name">{{ plant.name }}</h3>
+    <div class="plant-info">
+      <p><strong>Division:</strong> {{ plant.division }}</p>
+      <p><strong>Address:</strong> {{ plant.address }}</p>
+      <p><strong>Country:</strong> {{ plant.country }}</p>
+    </div>
+  </div>
+</div>
+
+<button
+  *ngIf="next"
+  (click)="loadPlants()"
+  [disabled]="loading"
+  class="load-more-btn"
+>
+  {{ loading ? 'Loading...' : 'More Results' }}
+</button>
