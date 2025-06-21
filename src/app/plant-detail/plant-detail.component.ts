@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Plant} from '../dtos/plant';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlantService} from '../service/plant.service';
@@ -12,7 +12,8 @@ import {Subject, takeUntil} from 'rxjs';
     NgIf
   ],
   templateUrl: './plant-detail.component.html',
-  styleUrls: ['./plant-detail.component.scss']
+  styleUrls: ['./plant-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlantDetailComponent implements OnInit, OnDestroy{
   plant: Plant | null = null;
@@ -22,7 +23,8 @@ export class PlantDetailComponent implements OnInit, OnDestroy{
   constructor(
     private activeRouter: ActivatedRoute,
     private router: Router,
-    private plantService: PlantService
+    private plantService: PlantService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -44,9 +46,11 @@ export class PlantDetailComponent implements OnInit, OnDestroy{
         next: (plant) => {
           this.plant = plant;
           this.loading = false;
+          this.cdr.markForCheck();
         },
         error: () => {
           this.loading = false;
+          this.cdr.markForCheck();
         }
       });
   }

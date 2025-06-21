@@ -203,7 +203,8 @@ Added a smooth transition for hover states
 11. Concurrent Request Handling: When the "Load More Results" button is clicked, the method immediately returns if a loading operation is already in progress.
     This prevents multiple concurrent API requests and ensures efficient data loading.
 
-12.
+12. Performance Optimization with OnPush Strategy: ChangeDetectionStrategy.OnPush is applied to PlantListComponent & PlantDetailComponent to optimize performance. 
+   This ensures change detection only runs when necessary, reducing unnecessary DOM checks and improving app efficiency.
 
 ---
 
