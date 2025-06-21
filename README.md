@@ -170,41 +170,15 @@ Added a smooth transition for hover states
    {{ loading ? 'Loading...' : 'Load More Results' }}
    Adds a test to assert the correct label appears during the loading state after clicking the Load More Results button.
 
-4.
-  - **Plant Detail Loading Template**  
-    Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
+4. - **Plant Detail Loading Template**  
+  Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
 
-  ```html
 
-<ng-template #loadingTpl>
-  <p>Loading plant details...</p>
-</ng-template>
-```
+5. - **Plant List Loading Template**
+  Displays a loading message while the plant list is being fetched using Angular’s ng-template:
 
-5.
-  - **Plant List Loading Template**
-    Displays a loading message while the plant list is being fetched using Angular’s ng-template:
-
-  ```html
-
-<ng-template #loadingTpl>
-  <div class="loading-container">
-    <p>Loading plants...</p>
-  </div>
-</ng-template>
-
-```
-
-6.
-  - **Plant List : Subscription Cleanup on Component Destroy:**
-    Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view):
-```html
-
-ngOnDestroy(): void {
-this.plantsSub?.unsubscribe();
-}
-
-```
+6. Plant List : Subscription Cleanup on Component Destroy:**
+  Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view)
 
 7. Safe Observable Cleanup in PlantDetailComponent:
    Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
@@ -222,11 +196,10 @@ this.plantsSub?.unsubscribe();
 
 9. Added animation to .loading-container using fadeInScale to enhance user interaction and improve visual feedback during loading states.
 
-10. 
+10. Custom Scrollbar Styling : Added a reusable SCSS mixin custom-scrollbar to style scrollbars consistently across the project.
 
+11. 
 
-
-Ensures the user sees "Loading plant details..." when navigating to a plant’s detail view before data is loaded.
 ---
 
 ## Future Enhancements

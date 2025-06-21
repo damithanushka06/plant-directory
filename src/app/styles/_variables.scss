@@ -14,6 +14,10 @@ $color-address-text: #777;
 $color-description-text: #333;
 $color-btn-text: #ffffff;
 $color-loader: #106259;
+$color-scroll-thumb: #90A4AE;
+$color-scroll-track: #ECEFF1;
+$color-scroll-thumb-hover: #78909C;
+
 
 // Replace darken/lighten with color.adjust
 $color-btn-hover-bg: color.adjust($color-secondary, $lightness: -10%);

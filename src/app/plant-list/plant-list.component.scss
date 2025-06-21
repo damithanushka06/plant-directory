@@ -1,4 +1,5 @@
 @use '../styles/variables' as *;
+@use '../styles/common-style' as *;
 
 $color-text: #929395;
 
@@ -11,7 +12,7 @@ $color-text: #929395;
   padding: 11px 0.2rem;
   max-height: 433px;
   overflow-y: auto;
-
+  @include custom-scrollbar($color-scroll-thumb, $color-scroll-track, $color-scroll-thumb-hover);
   grid-template-columns: repeat(1, 1fr);
 
   @media (min-width: $breakpoint-tablet) {
