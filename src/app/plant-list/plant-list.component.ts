@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Plant} from '../dtos/plant';
 
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
@@ -16,7 +16,8 @@ import {Subscription} from 'rxjs';
     CommonModule
   ],
   templateUrl: './plant-list.component.html',
-  styleUrls: ['./plant-list.component.scss']
+  styleUrls: ['./plant-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlantListComponent implements OnInit, OnDestroy{
   plants: Plant[] = [];
@@ -24,7 +25,7 @@ export class PlantListComponent implements OnInit, OnDestroy{
   loading = false;
   private plantsSub?: Subscription;
 
-  constructor(private plantService: PlantService) {}
+  constructor(private plantService: PlantService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.loadPlants();
@@ -41,8 +42,10 @@ export class PlantListComponent implements OnInit, OnDestroy{
         this.plants = [...this.plants, ...plants];
         this.next = next;
         this.loading = false;
+        this.cdr.markForCheck();
       },
-      error: () => (this.loading = false),
+      error: () => (this.loading = false,  this.cdr.markForCheck()),
+
     });
   }
 

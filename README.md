@@ -174,46 +174,38 @@ Added a smooth transition for hover states
   - **Plant Detail Loading Template**  
     Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
 
-  ```html
-
-<ng-template #loadingTpl>
-  <p>Loading plant details...</p>
-</ng-template>
-```
 
 5.
   - **Plant List Loading Template**
     Displays a loading message while the plant list is being fetched using Angular’s ng-template:
 
-  ```html
-
-<ng-template #loadingTpl>
-  <div class="loading-container">
-    <p>Loading plants...</p>
-  </div>
-</ng-template>
-
-```
-
-6.
-  - **Plant List : Subscription Cleanup on Component Destroy:**
-    Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view):
-```html
-
-ngOnDestroy(): void {
-this.plantsSub?.unsubscribe();
-}
-
-```
+6. Plant List : Subscription Cleanup on Component Destroy:**
+   Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view)
 
 7. Safe Observable Cleanup in PlantDetailComponent:
    Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
 
-8. 
+8. SCSS Architecture Enhancement
+   Added a centralized SCSS variables file (_variables.scss) to manage design tokens such as colors, border-radius, and spacing consistently across the project.
 
+   Introduced a common global stylesheet to maintain shared styles and reduce duplication across components.
 
+   Benefits:
 
-Ensures the user sees "Loading plant details..." when navigating to a plant’s detail view before data is loaded.
+   Improves maintainability and consistency in UI styling.
+
+   Makes it easier to update themes or branding in one place.
+
+9. Added animation to .loading-container using fadeInScale to enhance user interaction and improve visual feedback during loading states.
+
+10. Custom Scrollbar Styling : Added a reusable SCSS mixin custom-scrollbar to style scrollbars consistently across the project.
+
+11. Concurrent Request Handling: When the "Load More Results" button is clicked, the method immediately returns if a loading operation is already in progress.
+    This prevents multiple concurrent API requests and ensures efficient data loading.
+
+12. Performance Optimization with OnPush Strategy: ChangeDetectionStrategy.OnPush is applied to PlantListComponent & PlantDetailComponent to optimize performance. 
+   This ensures change detection only runs when necessary, reducing unnecessary DOM checks and improving app efficiency.
+
 ---
 
 ## Future Enhancements
@@ -221,10 +213,8 @@ Ensures the user sees "Loading plant details..." when navigating to a plant’s 
 If further developed, the following features could be added:
 
 - **Search & Filter**: Allow filtering of plants by name, country, or division.
-- **Test Coverage**: Add unit tests for services.
 - **Error States**: Display error messages on API failure or invalid routes.
 - **Accessibility (a11y)**: Improve keyboard support and add ARIA attributes.
-- **Lazy Loading & Virtual Scroll**: Optimize for performance with large datasets.
 - **Internationalization (i18n)**: Support multiple languages.
 
 ---
