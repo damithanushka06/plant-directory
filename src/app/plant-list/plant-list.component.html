@@ -6,7 +6,7 @@
       class="plant-card"
       *ngFor="let plant of plants"
       [routerLink]="['/plant', plant.id]">
-      <h3 class="plant-link">{{ plant.name }}</h3>
+      <h3 class="plant-name">{{ plant.name }}</h3>
       <div class="plant-info">
         <p>{{ plant.division }}</p>
         <p>{{ plant.address }}</p>

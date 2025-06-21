@@ -1,5 +1,7 @@
 @use '../styles/variables' as *;
 
+$color-text: #929395;
+
 .plant-list {
   display: grid;
   grid-gap: 1rem;
@@ -48,13 +50,12 @@
   cursor: pointer;
 
   .plant-name {
-    font-weight: bold;
     color: $color-primary;
     margin-bottom: 0.5rem;
   }
 
   .plant-info {
-    //color: $color-text;
+    color: $color-text;
     font-size: 0.9rem;
 
     p {

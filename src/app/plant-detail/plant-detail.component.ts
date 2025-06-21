@@ -18,7 +18,7 @@ export class PlantDetailComponent implements OnInit{
   loading = false;
 
   constructor(
-    private route: ActivatedRoute,
+    private activeRouter: ActivatedRoute,
     private router: Router,
     private plantService: PlantService
   ) {}
@@ -27,8 +27,11 @@ export class PlantDetailComponent implements OnInit{
     this.loadPlant();
   }
 
+  /**
+   * This method is taking active id from the router pram and pass it to the service
+   */
   loadPlant(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.activeRouter.snapshot.paramMap.get('id'));
     if (!id) return;
 
     this.loading = true;
@@ -44,6 +47,9 @@ export class PlantDetailComponent implements OnInit{
     });
   }
 
+  /**
+   * this method go back to the plant list
+   */
   goBack(): void {
     this.router.navigate(['/plants']);
   }
