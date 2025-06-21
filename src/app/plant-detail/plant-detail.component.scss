@@ -1,4 +1,5 @@
-@import '/app/styles/variables';
+@use '../styles/variables' as *;
+
 
 .plant-detail-container {
   max-width: $max-width;

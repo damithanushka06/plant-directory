@@ -1,13 +1,17 @@
 <div class="plant-list">
-  <div class="plant-card" *ngFor="let plant of plants">
-    <h3  [routerLink]="['/plant', plant.id]" class="plant-link" >{{ plant.name }}</h3>
+  <div
+    class="plant-card"
+    *ngFor="let plant of plants"
+    [routerLink]="['/plant', plant.id]">
+    <h3 class="plant-link">{{ plant.name }}</h3>
     <div class="plant-info">
-      <p><strong>Division:</strong> {{ plant.division }}</p>
-      <p><strong>Address:</strong> {{ plant.address }}</p>
-      <p><strong>Country:</strong> {{ plant.country }}</p>
+      <p>{{ plant.division }}</p>
+      <p>{{ plant.address }}</p>
+      <p>{{ plant.country }}</p>
     </div>
   </div>
 </div>
+
 
 <button
   *ngIf="next"
