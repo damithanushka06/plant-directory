@@ -49,6 +49,11 @@ $color-text: #929395;
   justify-content: flex-start;
   cursor: pointer;
 
+  &:hover {
+    background-color: $color-bg;
+    box-shadow: 0 4px 12px rgba($color-primary, 0.2);
+  }
+
   .plant-name {
     color: $color-primary;
     margin-bottom: 0.5rem;
@@ -88,3 +93,4 @@ $color-text: #929395;
     cursor: not-allowed;
   }
 }
+

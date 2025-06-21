@@ -82,54 +82,54 @@ To execute unit tests using the [Karma](https://karma-runner.github.io) test run
 ```bash
 ng test
 ```
+
 Tested Modules
 
 PlantService (plant.service.spec.ts)
 
- 1. Tests getPlants():
+1. Tests getPlants():
 
- 2. Verifies API call and response transformation.
+2. Verifies API call and response transformation.
 
- 3. Tests getPlantById(id):
+3. Tests getPlantById(id):
 
- 4. Fetches individual plant details by ID.
+4. Fetches individual plant details by ID.
 
 Uses HttpClientTestingModule to mock HTTP requests.
 
 PlantDetailComponent (plant-detail.component.spec.ts)
 
- 1. Calls loadPlant() on ngOnInit().
+1. Calls loadPlant() on ngOnInit().
 
- 2. Mocks route parameters using ActivatedRoute.
+2. Mocks route parameters using ActivatedRoute.
 
 Verifies:
 
- 1. Successful API response.
+1. Successful API response.
 
- 2. Error handling behavior.
+2. Error handling behavior.
 
- 3. Edge case: Invalid id (no API call made).
+3. Edge case: Invalid id (no API call made).
 
- 4. Tests goBack() navigation using mock Router.
+4. Tests goBack() navigation using mock Router.
 
 PlantListComponent (plant-list.component.spec.ts)
 
- 1. Fetches plant list on component load.
+1. Fetches plant list on component load.
 
- 2. Tests pagination behavior with mocked API responses.
+2. Tests pagination behavior with mocked API responses.
 
- 3. Handles loading and error states.
-
+3. Handles loading and error states.
 
 Testing Tools & Modules
 
- 1. HttpClientTestingModule for HTTP request mocking.
+1. HttpClientTestingModule for HTTP request mocking.
 
- 2. ActivatedRoute mock via convertToParamMap().
+2. ActivatedRoute mock via convertToParamMap().
 
- 3. Jasmine spies (jasmine.createSpyObj) for services and router.
+3. Jasmine spies (jasmine.createSpyObj) for services and router.
 
- 4. RxJS of() and throwError() for mocking asynchronous responses.
+4. RxJS of() and throwError() for mocking asynchronous responses.
 
 ---
 
@@ -146,10 +146,74 @@ Testing Tools & Modules
 
 ## Enhancements & Improvements
 
-This project includes thoughtful enhancements beyond basic scaffolding:
+1. Enhancement Details:
+
+Component: PlantListComponent
+
+File: plant-list.component.scss
+
+Change:
+
+Added a hover effect to .plant-card class
+
+Uses a subtle background color (#f9f9f9) and elevated shadow to highlight card interactivity
+
+Added a smooth transition for hover states
+
+2. Optimized `*ngFor` rendering in `PlantListComponent` using `trackByPlantId` to minimize DOM updates and improve performance:
+
+  ```html
+  *ngFor="let plant of plants; trackBy: trackByPlantId"
+  ```
+
+3. Verifies that the button displays "Loading..." text while a request is in progress:
+   {{ loading ? 'Loading...' : 'Load More Results' }}
+   Adds a test to assert the correct label appears during the loading state after clicking the Load More Results button.
+
+4.
+  - **Plant Detail Loading Template**  
+    Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
+
+  ```html
+
+<ng-template #loadingTpl>
+  <p>Loading plant details...</p>
+</ng-template>
+```
+
+5.
+  - **Plant List Loading Template**
+    Displays a loading message while the plant list is being fetched using Angular’s ng-template:
+
+  ```html
+
+<ng-template #loadingTpl>
+  <div class="loading-container">
+    <p>Loading plants...</p>
+  </div>
+</ng-template>
+
+```
+
+6.
+  - **Plant List : Subscription Cleanup on Component Destroy:**
+    Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view):
+```html
+
+ngOnDestroy(): void {
+this.plantsSub?.unsubscribe();
+}
+
+```
+
+7. Safe Observable Cleanup in PlantDetailComponent:
+   Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
+
+8. 
 
 
 
+Ensures the user sees "Loading plant details..." when navigating to a plant’s detail view before data is loaded.
 ---
 
 ## Future Enhancements
