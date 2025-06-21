@@ -207,10 +207,8 @@ Added a smooth transition for hover states
 If further developed, the following features could be added:
 
 - **Search & Filter**: Allow filtering of plants by name, country, or division.
-- **Test Coverage**: Add unit tests for services.
 - **Error States**: Display error messages on API failure or invalid routes.
 - **Accessibility (a11y)**: Improve keyboard support and add ARIA attributes.
-- **Lazy Loading & Virtual Scroll**: Optimize for performance with large datasets.
 - **Internationalization (i18n)**: Support multiple languages.
 
 ---
