@@ -1,0 +1,40 @@
+// _variables.scss
+
+// Colors
+$color-primary: #2c3e50;
+$color-secondary: #2980b9;
+$color-accent: #2c7be5;
+$color-bg: #ecf0f1;
+$color-card-bg: #fff;
+$color-header-bg: #2f3a47;
+$color-header-text: #ffffff;
+$color-division: #35a8b8;
+$color-address-title: #555;
+$color-address-text: #777;
+$color-description-text: #333;
+$color-btn-text: #ffffff;
+$color-btn-hover-bg: darken($color-secondary, 10%);
+$color-btn-disabled-bg: lighten($color-secondary, 30%);
+
+// Font Sizes
+$font-size-back-btn: 0.9rem;
+$font-size-name: 1.8rem;
+$font-size-division: 1rem;
+$font-size-address-text: 0.85rem;
+
+// Font Weights
+$font-weight-back-btn: 500;
+$font-weight-name: 700;
+$font-weight-card-title: 600;
+
+// Layout
+$border-radius: 6px;
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$max-width: 960px;
+$margin-vertical: 2rem;
+$padding-horizontal: 1rem;
+
+// Breakpoints
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1025px;

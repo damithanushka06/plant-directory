@@ -1,32 +1,5 @@
-// Variables
-$max-width: 960px;
-$margin-vertical: 2rem;
-$padding-horizontal: 1rem;
+@import '/app/styles/variables';
 
-$color-primary: #2c7be5;
-$color-header-bg: #2f3a47;
-$color-header-text: white;
-$color-division: #35a8b8;
-$color-address-title: #555;
-$color-address-text: #777;
-$color-description-title-bg: #2f3a47;
-$color-description-text: #333;
-$color-card-bg: white;
-
-$font-size-back-btn: 0.9rem;
-$font-weight-back-btn: 500;
-$font-weight-name: 700;
-$font-size-name: 1.8rem;
-$font-size-division: 1rem;
-$font-weight-card-title: 600;
-$font-size-address-text: 0.85rem;
-
-$border-radius: 6px;
-$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-
-
-// Styles
 .plant-detail-container {
   max-width: $max-width;
   margin: $margin-vertical auto;
@@ -36,7 +9,7 @@ $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 .back-btn {
   background: none;
   border: none;
-  color: $color-primary;
+  color: $color-accent;
   cursor: pointer;
   font-size: $font-size-back-btn;
   margin-bottom: 1rem;
@@ -65,15 +38,16 @@ $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: grid;
   gap: 1rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoint-tablet) {
     grid-template-columns: 1fr 2fr;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: $breakpoint-tablet - 1) {
     grid-template-columns: 1fr;
   }
 
-  .address-card, .description-card {
+  .address-card,
+  .description-card {
     background: $color-card-bg;
     padding: 1rem;
     border-radius: $border-radius;
@@ -87,6 +61,7 @@ $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       font-weight: $font-weight-card-title;
       color: $color-address-title;
     }
+
     p {
       margin: 0.2rem 0;
       font-size: $font-size-address-text;
@@ -100,7 +75,7 @@ $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       margin-bottom: 0.5rem;
       font-weight: $font-weight-card-title;
       color: $color-header-text;
-      background-color: $color-description-title-bg;
+      background-color: $color-header-bg;
       padding: 0.5rem 1rem;
       border-radius: $border-radius $border-radius 0 0;
     }

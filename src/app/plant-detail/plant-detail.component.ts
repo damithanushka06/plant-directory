@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Plant} from '../dtos/plant';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlantService} from '../service/plant.service';
@@ -13,7 +13,7 @@ import {NgIf} from '@angular/common';
   templateUrl: './plant-detail.component.html',
   styleUrls: ['./plant-detail.component.scss']
 })
-export class PlantDetailComponent {
+export class PlantDetailComponent implements OnInit{
   plant: Plant | null = null;
   loading = false;
 
