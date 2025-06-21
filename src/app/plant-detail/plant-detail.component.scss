@@ -1,0 +1,92 @@
+@import '/app/styles/variables';
+
+.plant-detail-container {
+  max-width: $max-width;
+  margin: $margin-vertical auto;
+  padding: 0 $padding-horizontal;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: $color-accent;
+  cursor: pointer;
+  font-size: $font-size-back-btn;
+  margin-bottom: 1rem;
+  font-weight: $font-weight-back-btn;
+}
+
+.header {
+  background-color: $color-header-bg;
+  padding: 1.5rem;
+  color: $color-header-text;
+  margin-bottom: 1rem;
+
+  .name {
+    font-weight: $font-weight-name;
+    font-size: $font-size-name;
+    margin: 0;
+  }
+
+  .division {
+    font-size: $font-size-division;
+    color: $color-division;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  @media (max-width: $breakpoint-tablet - 1) {
+    grid-template-columns: 1fr;
+  }
+
+  .address-card,
+  .description-card {
+    background: $color-card-bg;
+    padding: 1rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+
+  .address-card {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: $font-weight-card-title;
+      color: $color-address-title;
+    }
+
+    p {
+      margin: 0.2rem 0;
+      font-size: $font-size-address-text;
+      color: $color-address-text;
+    }
+  }
+
+  .description-card {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: $font-weight-card-title;
+      color: $color-header-text;
+      background-color: $color-header-bg;
+      padding: 0.5rem 1rem;
+      border-radius: $border-radius $border-radius 0 0;
+    }
+
+    p {
+      padding: 1rem;
+      margin: 0;
+      color: $color-description-text;
+      background: $color-card-bg;
+      border-radius: 0 0 $border-radius $border-radius;
+      line-height: 1.5;
+    }
+  }
+}
