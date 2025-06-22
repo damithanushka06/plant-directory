@@ -1,10 +1,11 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {Plant} from '../dtos/plant';
+import {Plant} from '../../dtos/plant';
 
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
-import {PlantService} from '../service/plant.service';
+import {PlantService} from '../../services/plant.service';
 import {Subscription} from 'rxjs';
+import {AppConstant} from '../../constants/app-constant';
 
 @Component({
   selector: 'app-plant-list',
@@ -37,7 +38,7 @@ export class PlantListComponent implements OnInit, OnDestroy{
   loadPlants(): void {
     if (this.loading) return;
     this.loading = true;
-    this.plantsSub = this.plantService.getPlants(this.next ?? '').subscribe({
+    this.plantsSub = this.plantService.getPlants(this.next ?? AppConstant.EMPTY_STRING).subscribe({
       next: ({ plants, next }) => {
         this.plants = [...this.plants, ...plants];
         this.next = next;
@@ -57,4 +58,5 @@ export class PlantListComponent implements OnInit, OnDestroy{
     this.plantsSub?.unsubscribe();
   }
 
+  protected readonly AppConstant = AppConstant;
 }

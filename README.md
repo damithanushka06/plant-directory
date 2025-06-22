@@ -206,6 +206,32 @@ Added a smooth transition for hover states
 12. Performance Optimization with OnPush Strategy: ChangeDetectionStrategy.OnPush is applied to PlantListComponent & PlantDetailComponent to optimize performance. 
    This ensures change detection only runs when necessary, reducing unnecessary DOM checks and improving app efficiency.
 
+13. Handled Router Navigation Promises
+    Updated all this.router.navigate(...) calls to properly handle the returned Promise<boolean>. This helps:
+
+    Prevent unhandled promise rejections
+
+    Log navigation failures
+
+    Improve reliability of routing flow
+
+14. Global Error Feedback Mechanism: Implemented automatic logging of API errors using an HTTP interceptor to centralize error handling.
+
+    Network failures
+
+    404 - Resource not found
+
+    500 - Internal server error
+
+15. Network Connectivity Guard:
+    Implemented a NetworkGuard to prevent navigation when the device is offline. If no internet connection is detected, the user is alerted and 
+    redirected to a dedicated /offline route. This helps improve UX by avoiding broken or failed page loads.
+
+16. - **Automatic Offline Detection and Redirection**:  
+      The app monitors internet connectivity globally using a `NetworkService`. When disconnected, it automatically redirects users to a dedicated 
+      offline page and restores normal flow upon reconnection, improving UX and preventing failed API calls.
+
+
 ---
 
 ## Future Enhancements
@@ -216,6 +242,7 @@ If further developed, the following features could be added:
 - **Error States**: Display error messages on API failure or invalid routes.
 - **Accessibility (a11y)**: Improve keyboard support and add ARIA attributes.
 - **Internationalization (i18n)**: Support multiple languages.
+- Global API Error Feedback: Implement user-friendly notifications (e.g., snackbar/toast) to display API errors caught by the HTTP interceptor.
 
 ---
 

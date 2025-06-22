@@ -3,7 +3,7 @@ import { PlantDetailComponent } from './plant-detail.component';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import {PlantService} from '../service/plant.service';
+import {PlantService} from '../../services/plant.service';
 
 
 describe('PlantDetailComponent', () => {

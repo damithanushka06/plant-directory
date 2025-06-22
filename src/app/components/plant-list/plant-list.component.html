@@ -1,4 +1,4 @@
-<div class="plant-list-container" *ngIf="plants.length > 0; else loadingTpl">
+<div class="plant-list-container" *ngIf="plants.length > AppConstant.ZERO_VALUE; else loadingTpl">
   <h2 class="plant-list-header">Plants</h2>
 
   <div class="plant-list">

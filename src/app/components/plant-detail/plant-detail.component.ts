@@ -1,9 +1,11 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {Plant} from '../dtos/plant';
+import {Plant} from '../../dtos/plant';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PlantService} from '../service/plant.service';
+import {PlantService} from '../../services/plant.service';
 import {NgIf} from '@angular/common';
 import {Subject, takeUntil} from 'rxjs';
+import {AppConstant} from '../../constants/app-constant';
+import {AppMessage} from '../../constants/app-message';
 
 @Component({
   selector: 'app-plant-detail',
@@ -18,7 +20,7 @@ import {Subject, takeUntil} from 'rxjs';
 export class PlantDetailComponent implements OnInit, OnDestroy{
   plant: Plant | null = null;
   loading = false;
-  private destroy$ = new Subject<void>();
+  private destroy$:Subject<void> = new Subject<void>();
 
   constructor(
     private activeRouter: ActivatedRoute,
@@ -36,7 +38,7 @@ export class PlantDetailComponent implements OnInit, OnDestroy{
    */
 
   loadPlant(): void {
-    const id = Number(this.activeRouter.snapshot.paramMap.get('id'));
+    const id = Number(this.activeRouter.snapshot.paramMap.get(AppConstant.ID_STRING));
     if (!id) return;
 
     this.loading = true;
@@ -58,7 +60,17 @@ export class PlantDetailComponent implements OnInit, OnDestroy{
    * this method go back to the plant list
    */
   goBack(): void {
-    this.router.navigate(['/plants']);
+    this.router.navigate([AppConstant.ROUTE_PLANTS])
+      .then(success => {
+        if (success) {
+          console.log(AppMessage.NAVIGATION_SUCCESS);
+        } else {
+          console.warn(AppMessage.NAVIGATION_FAIL);
+        }
+      })
+      .catch(error => {
+        console.error(AppMessage.NAVIGATION_ERROR, error);
+      });
   }
 
   ngOnDestroy(): void {
