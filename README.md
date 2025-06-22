@@ -225,9 +225,6 @@ Testing Tools & Modules
       offline page and restores normal flow upon reconnection, improving UX and preventing failed API calls.
 
 
-- **Hosting Angular App on Firebase**: https://plant-directory-app.web.app/
-
-
 ---
 
 ## Future Enhancements
