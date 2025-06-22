@@ -20,15 +20,19 @@ export class OfflineComponent implements OnInit{
   constructor(private networkService: NetworkService, private router:Router) {
   }
   ngOnInit(): void {
-    this.networkService.isOnline$.subscribe((online) => {
-      this.isOnline = online;
-      if (online) {
+    this.networkService.isOnline$.subscribe({
+      next: (online) => {
+        this.isOnline = online;
         this.showToast = true;
-        setTimeout(() => {
-          this.showToast = false;
-        }, 3000);
-      } else {
-        this.showToast = true;
+
+        if (online) {
+          setTimeout(() => {
+            this.showToast = false;
+          }, 3000);
+        }
+      },
+      error: (error) => {
+        console.error(error);
       }
     });
   }
