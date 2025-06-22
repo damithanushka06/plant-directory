@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import {PlantListComponent} from './components/plant-list/plant-list.component';
 import {PlantDetailComponent} from './components/plant-detail/plant-detail.component';
 import {NetworkGuard} from './guard/network-gurd';
-import {OfflineComponent} from './components/offline/offline.component';
+import {NetworkStatusToastComponent} from './components/network-status-toast/network-status-toast.component';
 
 export const routes: Routes = [
   {
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'offline',
-    component: OfflineComponent
+    component: NetworkStatusToastComponent
   },
   {
     path: '**',

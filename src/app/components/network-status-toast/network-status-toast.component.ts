@@ -1,19 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule, NgIf} from '@angular/common';
+import { Component } from '@angular/core';
 import {NetworkService} from '../../services/network.service';
 import {Router} from '@angular/router';
+import {CommonModule, NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-offline',
+  selector: 'app-network-status-toast',
   imports: [
     NgIf,
     CommonModule
   ],
-  templateUrl: './offline.component.html',
+  templateUrl: './network-status-toast.component.html',
   standalone: true,
-  styleUrl: './offline.component.scss'
+  styleUrls: ['./network-status-toast.component.scss']
 })
-export class OfflineComponent implements OnInit{
+export class NetworkStatusToastComponent {
   showToast = false;
   isOnline = true;
 
