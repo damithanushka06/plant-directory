@@ -1,0 +1,7 @@
+<div
+  class="offline-toast"
+  *ngIf="showToast"
+  [ngClass]="{ 'online-toast': isOnline, 'offline-toast': !isOnline }">
+  <p *ngIf="!isOnline">No internet connection. Please check your network.</p>
+  <p *ngIf="isOnline">Back online. You are connected!</p>
+</div>

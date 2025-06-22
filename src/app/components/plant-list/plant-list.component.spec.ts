@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlantListComponent } from './plant-list.component';
 import { of, throwError } from 'rxjs';
-import {PlantService} from '../service/plant.service';
+import {PlantService} from '../../services/plant.service';
 import {By} from '@angular/platform-browser';
 import {ActivatedRoute, convertToParamMap, Router} from '@angular/router';
 
