@@ -1,13 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import {NetworkService} from './services/network.service';
+import {AppMessage} from './constants/app-message';
+import {AppConstant} from './constants/app-constant';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
   standalone: true,
-  styleUrl: './app.component.scss'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
   title = 'plant-directory';
@@ -18,12 +20,28 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.networkService.isOnline$.subscribe((online) => {
-      if (!online && this.router.url !== '/offline') {
-        this.router.navigate(['/offline']);
+      if (!online && this.router.url !== AppConstant.ROUTE_NETWORK_AVAILABILITY_NOTIFICATION) {
+        this.router.navigate([AppConstant.ROUTE_NETWORK_AVAILABILITY_NOTIFICATION]).then(
+          success => {
+            if (!success) {
+              console.error('Navigation to /offline failed');
+            }
+          },
+          err => console.error(AppMessage.NAVIGATION_ERROR, err)
+        );
+
       }
 
-      if (online && this.router.url === '/offline') {
-        this.router.navigate(['/plants']);
+      if (online && this.router.url === AppConstant.ROUTE_NETWORK_AVAILABILITY_NOTIFICATION) {
+        this.router.navigate([AppConstant.ROUTE_PLANTS]).then(
+          success => {
+            if (!success) {
+              console.error('Navigation to /offline failed');
+            }
+          },
+          err => console.error(AppMessage.NAVIGATION_ERROR, err)
+        );
+
       }
     });
   }

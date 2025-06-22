@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import {BehaviorSubject, fromEvent, map, merge, of} from 'rxjs';
+import {AppConstant} from '../constants/app-constant';
 
 @Injectable({ providedIn: 'root' })
 export class NetworkService {
@@ -7,14 +8,12 @@ export class NetworkService {
 
   constructor(private ngZone: NgZone) {
     this.monitorNetwork();
-    window.addEventListener('online', () => this.updateStatus(true));
-    window.addEventListener('offline', () => this.updateStatus(false));
   }
 
   private monitorNetwork() {
     this.ngZone.runOutsideAngular(() => {
-      const online$ = fromEvent(window, 'online').pipe(map(() => true));
-      const offline$ = fromEvent(window, 'offline').pipe(map(() => false));
+      const online$ = fromEvent(window, AppConstant.ONLINE).pipe(map(() => true));
+      const offline$ = fromEvent(window, AppConstant.OFFLINE).pipe(map(() => false));
       merge(online$, offline$, of(navigator.onLine)).subscribe(status => {
         if (typeof status === "boolean") {
           this.ngZone.run(() => this.onlineStatus$.next(status));
@@ -29,9 +28,5 @@ export class NetworkService {
 
   get isOnline() {
     return this.onlineStatus$.value;
-  }
-
-  private updateStatus(status: boolean): void {
-    this.onlineStatus$.next(status);
   }
 }
