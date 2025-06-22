@@ -161,28 +161,25 @@ Testing Tools & Modules
 
 
 - **Plant Detail Loading Template**: Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
-- 
+
 
 - **Plant List Loading Template**:Displays a loading message while the plant list is being fetched using Angular’s ng-template:
-- 
+
 
 - **Plant List : Subscription Cleanup on Component Destroy:**:Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view)
 
 
-- **Safe Observable Cleanup in PlantDetailComponent Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
+- Safe Observable Cleanup in PlantDetailComponent Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
 
 
 - **SCSS Architecture Enhancement**:
    Added a centralized SCSS variables file (_variables.scss) to manage design tokens such as colors, border-radius, and spacing consistently across the project.
 
+  - Introduced a common global stylesheet to maintain shared styles and reduce duplication across components.
+   
+  - Improves maintainability and consistency in UI styling.
 
-   Introduced a common global stylesheet to maintain shared styles and reduce duplication across components.
-
-   Benefits:
-
-   Improves maintainability and consistency in UI styling.
-
-   Makes it easier to update themes or branding in one place.
+  - Makes it easier to update themes or branding in one place.
 
 
 - **Added animation to .loading-container**: fadeInScale to enhance user interaction and improve visual feedback during loading states.
@@ -228,6 +225,9 @@ Testing Tools & Modules
       offline page and restores normal flow upon reconnection, improving UX and preventing failed API calls.
 
 
+- **Hosting Angular App on Firebase**: https://plant-directory-app.web.app/
+
+
 ---
 
 ## Future Enhancements
@@ -240,6 +240,13 @@ If further developed, the following features could be added:
 - **Internationalization (i18n)**: Support multiple languages.
 - **Global API Error Feedback**: Implement user-friendly notifications (e.g., snackbar/toast) to display API errors caught by the HTTP interceptor.
 - **User Authentication with JWT**: Implement a secure user authentication system using JSON Web Tokens (JWT). This will ensure that only authenticated users can access protected routes or features within the application.
+- **CI/CD Pipeline with GitHub Actions: Automate testing and deployment by setting up a GitHub Actions workflow that:** : 
+
+   - Runs linting and unit tests on every push
+
+   - Builds the Angular app
+
+   - Deploys to Firebase Hosting on successful builds
 
 ---
 
