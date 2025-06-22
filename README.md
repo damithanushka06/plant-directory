@@ -146,67 +146,57 @@ Testing Tools & Modules
 
 ## Enhancements & Improvements
 
-1. Enhancement Details:
+- **Style Added to the Plant List**:Added a hover effect to .plant-card class /Uses a subtle background color (#f9f9f9) and elevated shadow to highlight card interactivity/Added a smooth transition for hover states
 
-Component: PlantListComponent
 
-File: plant-list.component.scss
-
-Change:
-
-Added a hover effect to .plant-card class
-
-Uses a subtle background color (#f9f9f9) and elevated shadow to highlight card interactivity
-
-Added a smooth transition for hover states
-
-2. Optimized `*ngFor` rendering in `PlantListComponent` using `trackByPlantId` to minimize DOM updates and improve performance:
+- **Optimized `*ngFor` rendering in `PlantListComponent` using `trackByPlantId` to minimize DOM updates and improve performance:**:
 
   ```html
   *ngFor="let plant of plants; trackBy: trackByPlantId"
   ```
 
-3. Verifies that the button displays "Loading..." text while a request is in progress:
+- **Verifies that the button displays "Loading..." text while a request is in progress:**:
    {{ loading ? 'Loading...' : 'Load More Results' }}
    Adds a test to assert the correct label appears during the loading state after clicking the Load More Results button.
 
-4.
-  - **Plant Detail Loading Template**  
-    Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
+
+- **Plant Detail Loading Template**: Displays a loading message while plant details are being fetched using Angular’s `ng-template`:
 
 
-5.
-  - **Plant List Loading Template**
-    Displays a loading message while the plant list is being fetched using Angular’s ng-template:
+- **Plant List Loading Template**:Displays a loading message while the plant list is being fetched using Angular’s ng-template:
 
-6. Plant List : Subscription Cleanup on Component Destroy:**
-   Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view)
 
-7. Safe Observable Cleanup in PlantDetailComponent:
-   Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
+- **Plant List : Subscription Cleanup on Component Destroy:**:Ensures the plantsSub subscription is properly unsubscribed in ngOnDestroy() to prevent memory leaks when navigating away (e.g., going to plant detail view)
 
-8. SCSS Architecture Enhancement
+
+- Safe Observable Cleanup in PlantDetailComponent Used takeUntil and ngOnDestroy() to automatically unsubscribe from the HTTP observable when the component is destroyed. Prevents memory leaks and improves maintainability.
+
+
+- **SCSS Architecture Enhancement**:
    Added a centralized SCSS variables file (_variables.scss) to manage design tokens such as colors, border-radius, and spacing consistently across the project.
 
-   Introduced a common global stylesheet to maintain shared styles and reduce duplication across components.
+  - Introduced a common global stylesheet to maintain shared styles and reduce duplication across components.
+   
+  - Improves maintainability and consistency in UI styling.
 
-   Benefits:
+  - Makes it easier to update themes or branding in one place.
 
-   Improves maintainability and consistency in UI styling.
 
-   Makes it easier to update themes or branding in one place.
+- **Added animation to .loading-container**: fadeInScale to enhance user interaction and improve visual feedback during loading states.
 
-9. Added animation to .loading-container using fadeInScale to enhance user interaction and improve visual feedback during loading states.
 
-10. Custom Scrollbar Styling : Added a reusable SCSS mixin custom-scrollbar to style scrollbars consistently across the project.
+- **Custom Scrollbar Styling**: Added a reusable SCSS mixin custom-scrollbar to style scrollbars consistently across the project.
 
-11. Concurrent Request Handling: When the "Load More Results" button is clicked, the method immediately returns if a loading operation is already in progress.
+
+- **Concurrent Request Handling**:  When the "Load More Results" button is clicked, the method immediately returns if a loading operation is already in progress.
     This prevents multiple concurrent API requests and ensures efficient data loading.
 
-12. Performance Optimization with OnPush Strategy: ChangeDetectionStrategy.OnPush is applied to PlantListComponent & PlantDetailComponent to optimize performance. 
+
+- **Performance Optimization with OnPush Strategy**: ChangeDetectionStrategy.OnPush is applied to PlantListComponent & PlantDetailComponent to optimize performance. 
    This ensures change detection only runs when necessary, reducing unnecessary DOM checks and improving app efficiency.
 
-13. Handled Router Navigation Promises
+
+- **Handled Router Navigation Promises**:
     Updated all this.router.navigate(...) calls to properly handle the returned Promise<boolean>. This helps:
 
     Prevent unhandled promise rejections
@@ -215,7 +205,8 @@ Added a smooth transition for hover states
 
     Improve reliability of routing flow
 
-14. Global Error Feedback Mechanism: Implemented automatic logging of API errors using an HTTP interceptor to centralize error handling.
+
+- **Global Error Feedback Mechanism**: Implemented automatic logging of API errors using an HTTP interceptor to centralize error handling.
 
     Network failures
 
@@ -223,13 +214,18 @@ Added a smooth transition for hover states
 
     500 - Internal server error
 
-15. Network Connectivity Guard:
+
+- **Network Connectivity Guard**:
     Implemented a NetworkGuard to prevent navigation when the device is offline. If no internet connection is detected, the user is alerted and 
     redirected to a dedicated /offline route. This helps improve UX by avoiding broken or failed page loads.
 
-16. - **Automatic Offline Detection and Redirection**:  
+
+- **Automatic Offline Detection and Redirection**:  
       The app monitors internet connectivity globally using a `NetworkService`. When disconnected, it automatically redirects users to a dedicated 
       offline page and restores normal flow upon reconnection, improving UX and preventing failed API calls.
+
+
+- **Hosting Angular App on Firebase**: https://plant-directory-app.web.app/
 
 
 ---
@@ -242,7 +238,15 @@ If further developed, the following features could be added:
 - **Error States**: Display error messages on API failure or invalid routes.
 - **Accessibility (a11y)**: Improve keyboard support and add ARIA attributes.
 - **Internationalization (i18n)**: Support multiple languages.
-- Global API Error Feedback: Implement user-friendly notifications (e.g., snackbar/toast) to display API errors caught by the HTTP interceptor.
+- **Global API Error Feedback**: Implement user-friendly notifications (e.g., snackbar/toast) to display API errors caught by the HTTP interceptor.
+- **User Authentication with JWT**: Implement a secure user authentication system using JSON Web Tokens (JWT). This will ensure that only authenticated users can access protected routes or features within the application.
+- **CI/CD Pipeline with GitHub Actions: Automate testing and deployment by setting up a GitHub Actions workflow that:** : 
+
+   - Runs linting and unit tests on every push
+
+   - Builds the Angular app
+
+   - Deploys to Firebase Hosting on successful builds
 
 ---
 
